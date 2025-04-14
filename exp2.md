@@ -195,5 +195,3 @@ DELETE FROM VSET WHERE comm IS NULL OR comm = 0;
 - Use MySQL Workbench to write, execute and debug SQL queries effectively.
 
 ---
-
-Would you like me to now generate viva questions based on this experiment?
