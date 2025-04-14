@@ -1,9 +1,3 @@
-Here's a complete README.md for your GitHub repository containing Experiment 2 (DDL & DML) using MySQL Workbench.
-
-Feel free to copy this and place it inside your exp2-dbms repository:
-
-📁 README.md
-
 # 💾 DBMS Experiment 2 – DDL and DML Queries (MySQL Workbench)
 
 This repository contains practical and viva material for Experiment 2 of the DBMS lab course. It includes hands-on exercises using Data Definition Language (DDL) and Data Manipulation Language (DML) SQL queries in MySQL Workbench.
