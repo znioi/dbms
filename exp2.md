@@ -194,3 +194,165 @@ DELETE FROM VSET WHERE comm IS NULL OR comm = 0;
 - Use MySQL Workbench to write, execute and debug SQL queries effectively.
 
 ---
+---
+---
+
+---
+---
+
+# 🎓 DBMS Experiment 2 – Viva Questions & Answers
+
+---
+
+## 🧠 Basic Conceptual Questions
+
+### 1. What is the difference between DDL and DML?
+
+- DDL (Data Definition Language): Commands that define or modify the structure of database objects like tables.
+  - Examples: CREATE, ALTER, DROP, RENAME, TRUNCATE
+- DML (Data Manipulation Language): Commands used to manipulate data within the database.
+  - Examples: INSERT, UPDATE, DELETE
+
+---
+
+### 2. What is the purpose of the CREATE TABLE command?
+
+- It is used to create a new table with specified columns, data types, and constraints.
+
+Example:
+```sql
+CREATE TABLE student (
+  id INT PRIMARY KEY,
+  name VARCHAR(50)
+);
+```
+
+---
+
+### 3. How do you modify a column in a table?
+
+- Use the ALTER TABLE … MODIFY statement.
+
+Example:
+```sql
+ALTER TABLE student MODIFY name VARCHAR(100);
+```
+
+---
+
+### 4. What is the difference between TRUNCATE and DELETE?
+
+- TRUNCATE: Deletes all rows from a table, faster and does not generate individual row delete logs. Cannot be rolled back.
+- DELETE: Deletes rows based on a condition or all rows. Can be rolled back if inside a transaction.
+
+---
+
+### 5. What is the difference between DROP and TRUNCATE?
+
+- DROP: Completely removes the table structure and data.
+- TRUNCATE: Removes only the data, structure remains.
+
+---
+
+## ⚙️ SQL Syntax-Based Questions
+
+### 6. How do you add a new column to an existing table?
+
+```sql
+ALTER TABLE tablename ADD column_name DATATYPE(SIZE);
+```
+
+Example:
+```sql
+ALTER TABLE emp ADD phone VARCHAR(10);
+```
+
+---
+
+### 7. Write SQL command to rename a table.
+
+```sql
+RENAME TABLE old_name TO new_name;
+```
+
+Example:
+```sql
+RENAME TABLE emp TO emp1;
+```
+
+---
+
+### 8. Write SQL command to delete employees with no commission.
+
+```sql
+DELETE FROM emp WHERE comm IS NULL OR comm = 0;
+```
+
+---
+
+### 9. How do you update the salary of employees whose salary is between 5000 and 6000?
+
+```sql
+UPDATE emp SET salary = salary + 500 WHERE salary BETWEEN 5000 AND 6000;
+```
+
+---
+
+### 10. What does the CHECK constraint do?
+
+- It restricts the value that can be inserted into a column based on a condition.
+
+Example:
+```sql
+age INT CHECK(age > 18)
+```
+
+---
+
+## 🔐 Constraints and Integrity
+
+### 11. What is a Primary Key?
+
+- A unique identifier for each record in a table. Cannot have NULL or duplicate values.
+
+---
+
+### 12. What is a Unique Key?
+
+- Ensures all values in a column are unique. Can have NULL (once).
+
+---
+
+### 13. What is the Default constraint?
+
+- Assigns a default value to a column when no value is specified during insert.
+
+Example:
+```sql
+comm DECIMAL(5,2) DEFAULT 0
+```
+
+---
+
+### 14. How do you delete a column from a table?
+
+```sql
+ALTER TABLE tablename DROP COLUMN column_name;
+```
+
+Example:
+```sql
+ALTER TABLE emp DROP COLUMN phone;
+```
+
+---
+
+### 15. How do you insert data into only specific columns of a table?
+
+```sql
+INSERT INTO tablename (col1, col2) VALUES (val1, val2);
+```
+
+---
+
+
