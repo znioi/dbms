@@ -1,6 +1,5 @@
 # 💾 DBMS Experiment 2 – DDL and DML Queries (MySQL Workbench)
 
-This repository contains practical and viva material for Experiment 2 of the DBMS lab course. It includes hands-on exercises using Data Definition Language (DDL) and Data Manipulation Language (DML) SQL queries in MySQL Workbench.
 
 ---
 
