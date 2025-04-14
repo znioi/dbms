@@ -18,9 +18,9 @@ UNION
 SELECT name, age FROM table2;
 ```
 
-### 2. INTERSECT (Not direct in SQL)
+### 2. INTERSECT (Not direct in MySQL)
 - Returns common rows between two queries.
-- Can be implemented using `IN`, `EXISTS`, or JOIN.
+- Can be simulated using `IN`, `EXISTS`, or `INNER JOIN`.
 
 ```sql
 SELECT column1, column2
@@ -32,12 +32,13 @@ WHERE column1 IN (
 
 ### 3. EXCEPT / MINUS
 - Returns rows from the first query that do not exist in the second.
-- Common in PostgreSQL (`EXCEPT`) or Oracle (`MINUS`).
+- Not directly available in MySQL; can be simulated using `NOT IN`.
 
 ```sql
 SELECT name, age FROM table1
-EXCEPT
-SELECT name, age FROM table2;
+WHERE (name, age) NOT IN (
+  SELECT name, age FROM table2
+);
 ```
 
 ---
@@ -45,6 +46,10 @@ SELECT name, age FROM table2;
 ## 💻 SQL Code
 
 ```sql
+-- Create and use database
+CREATE DATABASE IF NOT EXISTS DBMS_EXP6;
+USE DBMS_EXP6;
+
 -- Create Section Table
 CREATE TABLE section (
     course_id VARCHAR(10),
@@ -53,13 +58,14 @@ CREATE TABLE section (
 );
 
 -- Insert Data
-INSERT INTO section VALUES ('CS101', 'Fall', 2017);
-INSERT INTO section VALUES ('CS102', 'Spring', 2018);
-INSERT INTO section VALUES ('CS103', 'Fall', 2017);
-INSERT INTO section VALUES ('CS104', 'Spring', 2018);
-INSERT INTO section VALUES ('CS105', 'Fall', 2017);
-INSERT INTO section VALUES ('CS106', 'Spring', 2018);
-INSERT INTO section VALUES ('CS101', 'Spring', 2018);
+INSERT INTO section VALUES 
+('CS101', 'Fall', 2017),
+('CS102', 'Spring', 2018),
+('CS103', 'Fall', 2017),
+('CS104', 'Spring', 2018),
+('CS105', 'Fall', 2017),
+('CS106', 'Spring', 2018),
+('CS101', 'Spring', 2018);
 
 -- 1. Courses in Fall 2017
 SELECT course_id FROM section
@@ -110,35 +116,43 @@ CREATE TABLE instructor2 (
 );
 
 -- Insert Sample Data
-INSERT INTO instructor1 VALUES ('Amit', 55000), ('Priya', 72000), ('Rahul', 63000);
-INSERT INTO instructor2 VALUES ('Neha', 75000), ('Karan', 72000), ('Riya', 65000);
+INSERT INTO instructor1 VALUES 
+('Amit', 55000),
+('Priya', 72000),
+('Rahul', 63000);
 
--- UNION
+INSERT INTO instructor2 VALUES 
+('Neha', 75000),
+('Karan', 72000),
+('Riya', 65000),
+('Amit', 55000); -- common record for intersect test
+
+-- 7. UNION of instructor1 and instructor2
 SELECT * FROM instructor1
 UNION
 SELECT * FROM instructor2;
 
--- UNION ALL
+-- 8. UNION ALL (with duplicates)
 SELECT * FROM instructor1
 UNION ALL
 SELECT * FROM instructor2;
 
--- INTERSECT (simulate with IN)
+-- 9. INTERSECT simulation using IN
 SELECT * FROM instructor1
 WHERE (name, salary) IN (
     SELECT name, salary FROM instructor2
 );
 
--- EXCEPT (simulate with NOT IN)
+-- 10. EXCEPT simulation using NOT IN
 SELECT * FROM instructor1
 WHERE (name, salary) NOT IN (
     SELECT name, salary FROM instructor2
 );
 
--- Largest salary
+-- 11. Highest salary in instructor1
 SELECT MAX(salary) AS max_salary FROM instructor1;
 
--- Instructors with salary < max
+-- 12. Instructors with salary less than max
 SELECT * FROM instructor1
 WHERE salary < (
     SELECT MAX(salary) FROM instructor1
