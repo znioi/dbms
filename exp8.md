@@ -1,5 +1,3 @@
-Here’s a complete Markdown file for Experiment 8 of your DBMS practical and viva preparation. It includes the title, aim, theory, SQL code (in a single fenced block), viva questions (25 with answers), and the learning outcome.
-
 📄 exp8.md
 
 # 🧪 Experiment 8 – Implementation of Stored Procedures and Loops in MySQL
@@ -182,4 +180,4 @@ CALL InOddEven();
 - Perform control operations like IF, MOD, and variable handling in procedural SQL.
 - Apply procedural programming techniques in SQL for batch data insertion.
 
-Let me know if you want me to export this as a downloadable file or directly generate your full GitHub repo structure including this markdown!
+
