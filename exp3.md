@@ -1,6 +1,4 @@
----
 
-````markdown
 # DBMS Lab - Experiment 3
 
 ## Aim
@@ -60,11 +58,11 @@ In SQL (Structured Query Language), basic operations are used to interact with a
 | Date & Time | `DATE (YYYY-MM-DD)`, `TIME (HH:MM:SS)`   |
 | Timestamp   | `DATE + TIME`                            |
 
----
+
 
 ## 💻 Executable SQL Code (Paste Directly in MySQL Workbench)
 
-```sql
+```code 
 -- College Database
 CREATE DATABASE IF NOT EXISTS CollegeDB;
 USE CollegeDB;
@@ -208,6 +206,7 @@ UPDATE Loan SET loan_no = 'L001-UPDATED' WHERE loan_id = 201;
 -- Insert and Delete
 INSERT INTO Account VALUES (104, 2, 1, 7000); -- Without phone for cust_id 2
 DELETE FROM Account WHERE acc_id = 104;
+```
 ```
 
 ---
